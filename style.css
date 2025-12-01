@@ -1,0 +1,112 @@
+@import "tailwindcss";
+/* box-shadow: offset-x offset-y blur-radius spread-radius color inset; */
+
+@import "tailwindcss";
+/* box-shadow: offset-x offset-y blur-radius spread-radius color inset; */
+
+* {
+    box-sizing: border-box;
+}
+
+ 
+
+body {
+    --background-color: white;
+    --text-color: black;
+    --elements-color: white;
+    margin: 0;
+    font-family: Nunito, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.dark-mode {
+    --background-color: hsl(207, 26%, 17%); 
+    --text-color: white;
+    --elements-color: hsl(209, 23%, 22%);
+}
+
+/* Hide horizontal scrollbar globally */
+body {
+    overflow-x: hidden;
+}
+
+/* Keep .filter-wrapper as a minimal fallback; primary styling uses Tailwind classes in HTML */
+.filter-wrapper {
+    width: 250px;
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: var(--elements-color);
+    color: var(--text-color);
+}
+ 
+.border-countries a {
+    padding: 4px 16px;
+    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+ 
+
+@media(max-width: 768px) {
+    .countries-container {
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .header-content p {
+        font-size: 12px;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+}
+
+@media(max-width: 940px) {
+    .country-details {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 32px;
+        gap: 16px;
+    }
+
+    .details-text {
+        max-height: unset;
+        display: block;
+    }
+
+    .country-details img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+}
+
+/* Ensure country cards are full-width inside the responsive grid */
+.country-card {
+    width: 100% !important;
+    background: var(--elements-color);
+    color: var(--text-color);
+}
+
+/* make common components follow the theme variables */
+.search-container,
+.header-content,
+.card-text {
+    background: transparent;
+    color: var(--text-color);
+}
+
+.search-container {
+    background: var(--elements-color);
+}

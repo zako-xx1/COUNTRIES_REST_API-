@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        #loader {
+            display: none;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        #error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">⏳ Loading country details...</div>
+    <div id="error"></div>
+
+    <div class="card" id="country-card"></div>
+
+    <script>
+        // Show loading text
+        document.getElementById("loader").style.display = "block";
+
+        // Get ?name=Pakistan from URL
+        const countryName = new URLSearchParams(window.location.search).get('name');
+
+        if (!countryName) {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("error").innerText = "❌ No country name provided in URL!";
+        }
+
+        // Fetch API
+        fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
+            .then(res => res.json())
+            .then(([country]) => {
+
+                // Hide loader
+                document.getElementById("loader").style.display = "none";
+
+                // Format population (Pakistan/India lakh style)
+                const population = country.population.toLocaleString('en-IN');
+
+                // Fill card
+                document.getElementById("country-card").innerHTML = `
+                    <h2>${country.name.common}</h2>
+                    <img src="${country.flags.svg}" alt="Flag">
+                    <p><strong>Population:</strong> ${population}</p>
+                    <p><strong>Capital:</strong> ${country.capital?.[0] || "N/A"}</p>
+                    <p><strong>Region:</strong> ${country.region}</p>
+                    <p><strong>Subregion:</strong> ${country.subregion || "N/A"}</p>
+                    <p><strong>Languages:</strong> ${Object.values(country.languages || {}).join(", ")}</p>
+                    <p><strong>Continents:</strong> ${country.continents}</p>
+                `;
+            })
+            .catch(() => {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("error").innerHTML =
+                    "❌ Country not found. Please check spelling.";
+            });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COUNTRIES REST | API JS</title>
+    <!-- nunito font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+      rel="stylesheet"
+    />
+    <!-- link of font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css"
+      integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- link of tailwind css-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="country.js" defer></script>
+  </head>
+  <body class="font-nunito  ">  
+    <header class="shadow-sm p-3">
+      <nav
+        class="header-content max-w-[1200px] sticky mx-auto  flex justify-between align-middle"
+      >
+        <h2 class="font-extrabold text-[22px]"><a href="/">Where Is The World?</a></h2>
+        <p id="dark-mode" class="cursor-pointer"><i class="fa-regular fa-moon"> &nbsp; Dark mode</i> </p>
+      </nav>
+    </header>
+    
+    <main class="max-w-[1200px] mx-auto mt-8 p-6 overflow-x-hidden  ">
+      <span
+        class="shadow-lg mr-2 py-1 px-7 leading-0.5 rounded-sm cursor-pointer"
+        id="back-btn"
+        onclick="window.location.href='index.html'"
+        ><i class="fa-solid fa-home"></i>&nbsp;&nbsp;Home</span
+      >
+      <span
+        class="shadow-lg  py-1 px-7 leading-0.5 rounded-sm cursor-pointer"
+        id="back-btn"
+        onclick="history.back()"
+        ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</span
+      >
+      <section
+        class="country-details max-w-[1200px] flex max-h-full items-center gap-20 my-12  "
+      >
+        <!-- country detail card -->
+        <img class="flag-img shadow-lg rounded-md  h-auto" src="" alt="" />
+        <div class="detail-container">
+          <h1 class="text-[28px] font-bold countryName"></h1>
+          <h2 class="sologen text-[18px] font-semibold">
+            islmaic republic of pakistan
+          </h2>
+          <div
+            class="details-text mt-6 flex flex-col h-[170px] gap-x-10 flex-wrap"
+          >
+            <p class="pt-2">
+              <b>Native Name: </b>&nbsp;<span class="native-name"></span>
+            </p>
+            <p class="pt-2">
+              <b>Population: </b>&nbsp;<span class="population"></span>
+            </p>
+            <p class="pt-2">
+              <b>Region: </b>&nbsp;<span class="region"></span>
+            </p>
+            <p class="pt-2">
+              <b>Sub Region: </b>&nbsp;<span class="sub-region"></span>
+            </p>
+            <p class="pt-2">
+              <b>Capital: </b>&nbsp;<span class="capital"></span>
+            </p>
+            <p class="pt-2">
+              <b>Top Level Domain: </b>&nbsp;<span class="top-level"></span>
+            </p>
+            <p class="pt-2">
+              <b>Language: </b>&nbsp;<span class="language"></span>
+            </p>
+            <p class="pt-2 flex flex-wrap items-start">
+              <b>Currencies: </b>&nbsp;<span class="currency w-[50%] " ></span>
+            </p>
+          </div>
+          <div class="border-countries flex mt-6 gap-2 flex-wrap items-start">
+            <b class="px-2 block rounded-sm">Border Countries: </b>
+
+            &nbsp;
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
