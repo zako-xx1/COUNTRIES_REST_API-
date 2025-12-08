@@ -20,14 +20,16 @@ let allCountries = [];
 function createCountryCard(country) {
   const countryCard = document.createElement('a');
   countryCard.classList.add(
-    'country-card', 'w-full', 'sm:w-[250px]', 'pb-6','rounded-md', 'shadow-md','overflow-hidden', 'transition-all','duration-200','ease-in-out','hover:scale-[1.02]','hover:shadow-lg'
+    'w-full', 'sm:w-[250px]', 'pb-6','rounded-md', 'shadow-md','overflow-hidden', 'transition-all','duration-200','ease-in-out','hover:scale-[1.02]','hover:shadow-lg'
   );
+  countryCard.style.background = 'var(--elements-color)';
+  countryCard.style.color = 'var(--text-color)';
   countryCard.href = `./country.html?name=${country.name.common}`;
   const population = country.population ? country.population.toLocaleString('en-PK') : 'N/A';
   const capital = Array.isArray(country.capital) ? country.capital.join(', ') : (country.capital || 'N/A');
   countryCard.innerHTML = `
-    <img src="${country.flags.svg}" alt="${country.name.common} flag" class="w-full h-[150px]" />
-    <div class="card-text px-4">
+    <img src="${country.flags.svg}" alt="${country.name.common} flag" class="w-full h-[150px] object-cover" />
+    <div class="px-4">
       <h3 class="text-[28px] my-4 font-bold">${country.name.common}</h3>
       <p class="my-2"><b>Population: </b>&nbsp; ${population}</p>
       <p class="my-2"><b>Region: </b>&nbsp;${country.region}</p>
@@ -85,25 +87,15 @@ searchInput.addEventListener('input',  (e) => {
       '<h2 class="col-span-full text-center text-lg font-bold">No country found</h2>');
 })
 
+
 if (darkMode) {
   darkMode.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    // Save theme choice
     if (document.body.classList.contains('dark-mode')) {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    } else if (document.body.classList.contains('light-mode')) {
-      document.body.classList.remove('light-mode');
-      document.body.classList.add('dark-mode');
       localStorage.setItem('theme', 'dark');
     } else {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (prefersDark) {
-        document.body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-      }
+      localStorage.setItem('theme', 'light');
     }
   });
 }

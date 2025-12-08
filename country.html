@@ -22,41 +22,41 @@
     <link rel="stylesheet" href="style.css" />
     <script src="country.js" defer></script>
   </head>
-  <body class="font-nunito  ">  
+  <body class="font-nunito bg-[var(--background-color)] text-[var(--text-color)]">
     <header class="shadow-sm p-3">
       <nav
-        class="header-content max-w-[1200px] sticky mx-auto  flex justify-between align-middle"
+        class="header-content max-w-[1200px] sticky mx-auto flex justify-between items-center"
       >
         <h2 class="font-extrabold text-[22px]"><a href="/">Where Is The World?</a></h2>
         <p id="dark-mode" class="cursor-pointer"><i class="fa-regular fa-moon"> &nbsp; Dark mode</i> </p>
       </nav>
     </header>
     
-    <main class="max-w-[1200px] mx-auto mt-8 p-6 overflow-x-hidden  ">
-      <span
-        class="shadow-lg mr-2 py-1 px-7 leading-0.5 rounded-sm cursor-pointer"
-        id="back-btn"
-        onclick="window.location.href='index.html'"
-        ><i class="fa-solid fa-home"></i>&nbsp;&nbsp;Home</span
-      >
-      <span
-        class="shadow-lg  py-1 px-7 leading-0.5 rounded-sm cursor-pointer"
-        id="back-btn"
-        onclick="history.back()"
-        ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</span
-      >
+    <main class="max-w-[1200px] mx-auto mt-8 p-4 md:p-6 overflow-x-hidden">
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span
+          class="shadow-[0_0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_0_8px_0_rgba(0,0,0,0.3)] py-2 px-6 rounded cursor-pointer inline-block bg-[var(--elements-color)] text-[var(--text-color)] transition-all duration-200"
+          onclick="window.location.href='index.html'"
+          ><i class="fa-solid fa-home"></i>&nbsp;&nbsp;Home</span
+        >
+        <span
+          class="shadow-[0_0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_0_8px_0_rgba(0,0,0,0.3)] py-2 px-6 rounded cursor-pointer inline-block bg-[var(--elements-color)] text-[var(--text-color)] transition-all duration-200"
+          onclick="history.back()"
+          ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</span
+        >
+      </div>
       <section
-        class="country-details max-w-[1200px] flex max-h-full items-center gap-20 my-12  "
+        class="country-details max-w-[1200px] flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-20 my-8 md:my-12"
       >
         <!-- country detail card -->
-        <img class="flag-img shadow-lg rounded-md  h-auto" src="" alt="" />
-        <div class="detail-container">
-          <h1 class="text-[28px] font-bold countryName"></h1>
+        <img class="flag-img shadow-lg rounded-md h-auto w-full md:w-1/2 max-w-full md:max-w-[500px]" src="" alt="" />
+        <div class="detail-container w-full">
+          <h1 class="text-[28px] font-bold countryName text-[var(--text-color)]"></h1>
           <h2 class="sologen text-[18px] font-semibold">
             islmaic republic of pakistan
           </h2>
           <div
-            class="details-text mt-6 flex flex-col h-[170px] gap-x-10 flex-wrap"
+            class="details-text mt-6 flex flex-col md:h-[170px] gap-x-10 md:flex-wrap"
           >
             <p class="pt-2">
               <b>Native Name: </b>&nbsp;<span class="native-name"></span>
@@ -84,9 +84,7 @@
             </p>
           </div>
           <div class="border-countries flex mt-6 gap-2 flex-wrap items-start">
-            <b class="px-2 block rounded-sm">Border Countries: </b>
-
-            &nbsp;
+            <b class="px-2 block rounded-sm text-[var(--text-color)]">Border Countries: </b>
           </div>
         </div>
       </section>

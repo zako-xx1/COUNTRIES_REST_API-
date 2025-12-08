@@ -89,11 +89,11 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
  🔸 Easier to read
  🔸 Directly gives you the object you need */
                         const borderCountryTag = document.createElement('a')
+                        borderCountryTag.className = 'py-1.5 px-4 shadow-[0_0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_0_8px_0_rgba(0,0,0,0.3)] rounded text-sm bg-[var(--elements-color)] text-[var(--text-color)] transition-all duration-200 inline-block'
                         borderCountryTag.innerText = borderCountry.name.common
                         borderCountryTag.href = `country.html?name=${borderCountry.name.common}`
                         console.log(borderCountryTag)
                         borderCountries.append(borderCountryTag)
-                        br
                     })
             })
         } else {
@@ -107,27 +107,15 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
 
 
 if (darkMode) {
-    darkMode.addEventListener('click', (e) => {
+    darkMode.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        // Save theme choice
         if (document.body.classList.contains('dark-mode')) {
-            document.body.classList.remove('dark-mode')
-            document.body.classList.add('light-mode')
-            localStorage.setItem('theme', 'light')
-        } else if (document.body.classList.contains('light-mode')) {
-            document.body.classList.remove('light-mode')
-            document.body.classList.add('dark-mode')
-            localStorage.setItem('theme', 'dark')
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
         }
-
-    })
-} else {
-    const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (preferDark) {
-        document.body.classList.add('light-mode')
-        localStorage.setItem('theme', 'light')
-    } else {
-        document.body.classList.add('dark-mode')
-        localStorage.setItem('theme', 'dark')
-    }
+    });
 }
 
 
